@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.base.Optional;
 
@@ -21,8 +22,9 @@ public class ControllerHome {
 				Optional.fromNullable(apodo)
 				.transform(it -> user.findByApodo(it))
 				.or(user.getCapturas());
+		//Esto es como una especie de if mas cheto (or) si llega un apodo, devuelve ese usuario, sino todas las capturas
 		
-		HashMap<String, Object> viewModel = new HashMap<>();
+		Map<String, Object> viewModel = new HashMap<>();
 		viewModel.put("apodo", apodo);
 		viewModel.put("capturas", capturas);
 		
